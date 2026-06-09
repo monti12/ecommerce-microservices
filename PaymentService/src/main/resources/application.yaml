@@ -2,6 +2,10 @@ spring:
   application:
     name: payment-service
 
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+
   datasource:
     url: jdbc:postgresql://localhost:5433/PaymentDb
     username: postgres
@@ -10,7 +14,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
