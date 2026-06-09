@@ -1,0 +1,76 @@
+spring:
+  application:
+    name: notification-service
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    template:
+      observation-enabled: true
+
+    listener:
+      observation-enabled: true
+
+    consumer:
+      group-id: notification-service-group
+      auto-offset-reset: earliest
+
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+
+      properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: "*"
+        spring.json.value.default.type: com.NotificationService.events.OrderCreatedEvent
+        spring.json.use.type.headers: false
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: akshatsinghal1995@gmail.com
+    password: kqdl raaz argk buzb
+
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+
+  tracing:
+    enabled: true
+
+    sampling:
+      probability: 1.0
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}] %m%n"
+
+jwt:
+  secret: "my-super-secret-key-my-super-secret-key-123456"
