@@ -1,0 +1,22 @@
+server:
+  port: 8083
+
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: akshatsinghal1995@gmail.com
+    password: kqdl raaz argk buzb
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
