@@ -396,20 +396,6 @@ Email Notification Sent
 
 ---
 
-## Future Enhancements
-
-* Docker & Docker Compose
-* Spring Cloud Config Server
-* Prometheus
-* Grafana
-* ELK Stack
-* Kubernetes Deployment
-* GitHub Actions CI/CD
-* Distributed Caching
-* Event Choreography Saga
-
----
-
 ## Author
 
 Akshat Singhal
